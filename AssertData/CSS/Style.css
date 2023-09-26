@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    /* text-align: center; */
+}
+
+body::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.cm::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.custom-input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-input {
+    background-image: url('https://cdn-icons-png.flaticon.com/128/401/401061.png');
+    background-size: 120px 120px; /* Adjust the size as needed */
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    padding-left: 30px; /* Adjust the padding to ensure the text is not covered by the image */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+.custom-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-input input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+#image-preview {
+    text-align: center; /* Center the image horizontally */
+    height: 200px;
+     /* Set the desired height for the container */
+    display: flex;
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+}
+
+#image-preview img {
+    width: 200px;
+    height: 200px;
+    max-width: 100%; /* Ensure the image fits within the container */
+    max-height: 100%; /* Ensure the image fits within the container */
+}
+

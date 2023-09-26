@@ -1,0 +1,47 @@
+<script>
+    function showImage(input) {
+        const preview = document.getElementById('image-preview');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.innerHTML = `<img src="${e.target.result}" alt="Selected Image" width="100">`;
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.innerHTML = '';
+        }
+    }
+</script>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/post/save" enctype="multipart/form-data" method="post">
+                    <div class="mb-3 row" style="width: 100%;">
+                        <label for="exampleInputEmail1" class="form-label">Add Text@</label>
+                        <input type="text" class="form-control" name="content">
+                        <div class="custom-input-container mt-3">
+                            <input type="file" class="form-control custom-input border-0" name="postAvtar" onchange="showImage(this)">
+                        </div>
+                         <div id="image-preview"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/render.js"></script>

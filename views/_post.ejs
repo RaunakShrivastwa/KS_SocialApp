@@ -1,0 +1,87 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<div id="post-<%= post._id %>" style="margin-top: 4px">
+  <div>
+
+    <!-- for the post Heading -->
+    <nav class="navbar navbar-expand mt-3"
+      style="box-shadow: 5px 5px 3px 0px gray;background-color: rgb(248, 240, 240)">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="<%= post.user.avtar%>" style="border-radius: 50%; width: 50px; height: 50px;" class="img-fluid mt-2"
+            alt="...">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"><strong>
+                  <%= post.user.name %>
+
+                </strong></a>
+              <%= post.content%>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <% if(locals.user && locals.user.id == post.user.id) { %>
+            <a href="/post/delete/<%= post.id %>"> <img width="30px"
+                src="https://cdn-icons-png.flaticon.com/128/1617/1617543.png" alt=""></a>
+                <% } %>  
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- for the Image of Post -->
+    <div class="bg-info">
+      <div class="d-flex justify-content-around align-items-center" style="width: 100%; background-repeat: no-repeat;">
+        <img src="<%= post.postAvtar%>" class="" alt="<%= post.user.name %>" style="width: 100%; height: 70vh;"
+          srcset="">
+
+      </div>
+      <!-- for the addding post -->
+      <nav class="navbar navbar-expand post-comment"
+        style="box-shadow: 5px 5px 3px 0px gray;background-color: rgb(248, 240, 240)">
+        <div class="container-fluid">
+          <!-- for the like -->
+          <a class="navbar-brand" href="#">
+            <img width="30px" src="https://cdn-icons-png.flaticon.com/128/1077/1077035.png" alt="">
+          </a>
+
+          <!-- for the Comment -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown dropup">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img width="30px" src="https://cdn-icons-png.flaticon.com/128/8402/8402278.png" alt="">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-up cm" id="post-comments-<%= post._id %>" aria-labelledby="navbarDropdown"
+                  style="box-shadow: 5px 5px 3px 0px gray; width: max-content; height: auto; max-height: 30vh; overflow: scroll;">
+                  <% for (comment of post.comments){%>
+                    <%- include('_comment') -%>
+                  <% } %>
+                </ul>
+              </li>
+              
+              
+            
+
+            </ul>
+            <form class="d-flex" action="/comment/save" method="post" id="post-comments-form-<%= post.id %>">
+              <input class="form-control me-2" name="content" type="search" style="box-shadow: 5px 5px 3px 0px gray;"
+                placeholder="Write Comment" aria-label="Search">
+              <input type="hidden" name="post" value="<%= post._id %>">
+              <button class="btn btn-outline " title="Add Comment"
+                style="box-shadow: 5px 5px 3px 0px gray;cursor: pointer;" type="submit">post</button>
+            </form>
+
+            <!-- show comment -->
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+</div>
