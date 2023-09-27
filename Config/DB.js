@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/SocialSite');
-// mongoose.connect('mongodb+srv://Shubham:369@cluster0.zy4qbxi.mongodb.net/?retryWrites=true&w=majority');
-
-const db=mongoose.connection;
-
-db.on('error',console.error.bind(console,"There is problem with connection"))
-db.once('open',function(){
-    console.log("Connection done...")
+mongoose.set('strictQuery', true);
+mongoose.connect( 'mongodb+srv://deploydata720:EFV8AxcsXrW3dZM2@cluster0.hi7pxnf.mongodb.net/Data', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
+  .then(() => {
+    console.log('MongoDB connected successfully');
+  })
+  .catch((error) => {
+    console.error('MongoDB connection error:', error);
+  });
