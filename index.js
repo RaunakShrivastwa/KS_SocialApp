@@ -12,7 +12,8 @@ const flashMessage= require('connect-flash');
 const flash = require('connect-flash/lib/flash');
 const customeFlash= require('./Config/middleWare')
 
-const Port=8000;
+
+const PORT= process.env.PORT || 8000;
 const app=express();
 app.use(expressLayout);
 // extracting the style for the pages
@@ -60,10 +61,10 @@ app.use(
 )
 app.use('/',router);
 
-app.listen(Port,function(err){
+app.listen(PORT,function(err){
     if(err){
         console.log("There is problem with started with server",err);
         return
     }
-    console.log("Your Server is running at port ",Port);
+    console.log("Your Server is running at port ",PORT);
 })  
