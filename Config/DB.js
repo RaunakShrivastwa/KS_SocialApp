@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
-mongoose.connect( 'mongodb+srv://deploydata720:EFV8AxcsXrW3dZM2@cluster0.hi7pxnf.mongodb.net/Data', {
+mongoose.connect( 'mongodb://127.0.0.1:27017/Facebook', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

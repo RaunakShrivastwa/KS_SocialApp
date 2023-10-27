@@ -11,6 +11,9 @@ const MongoStore= require('connect-mongo');
 const flashMessage= require('connect-flash');
 const flash = require('connect-flash/lib/flash');
 const customeFlash= require('./Config/middleWare')
+const Google= require('./Config/passport-google-oauth')
+const linkedin= require('./Config/passport-linkedin-strategy')
+const github= require('./Config/passport-github-strategy')
 
 
 const PORT= process.env.PORT || 8000;

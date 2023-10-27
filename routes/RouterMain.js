@@ -2,6 +2,7 @@ const express = require('express');
 const homeController = require('../controller/HomeController')
 const SignController=require('../controller/SignupController')
 const localStratgy= require('../Config/passport-local-strategy')
+const user= require('../controller/userController')
 const passport = require('passport')
 
 const router = express.Router();
@@ -14,5 +15,8 @@ router.use('/post',require('./PostRoute'))
 router.get('/signup',SignController.Signup);
 router.get('/login',SignController.login);
 router.use('/comment',require('./commentRoute'))
+
+
+
 
 module.exports = router;
